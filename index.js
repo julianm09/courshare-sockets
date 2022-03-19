@@ -18,7 +18,9 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-
+  socket.on("alert", (txt)=>{
+    io.emit("change", socket.id, txt)
+  })
 });
 
 server.listen(PORT, () => {
