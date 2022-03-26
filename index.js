@@ -18,8 +18,8 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  socket.on("alert", (txt)=>{
-    io.emit("change", socket.id, txt)
+  socket.on("alert", (txt, uid, name)=>{
+    io.emit("change", socket.id, txt, uid, name)
   })
 });
 
