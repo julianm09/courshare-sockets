@@ -20,6 +20,17 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   socket.on("alert", (txt, uid, name)=>{
     io.emit("change", socket.id, txt, uid, name)
+
+  })
+
+  socket.on("join", (uid, name)=>{
+    io.emit("joined", socket.id, uid, name)
+    console.log("join")
+  })
+
+  socket.on("typing", (uid, name)=>{
+    io.emit("typing", socket.id, uid, name)
+    console.log("typing")
   })
 });
 
