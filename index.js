@@ -18,17 +18,17 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  socket.on("alert", (txt, uid, name) => {
-    io.emit("change", socket.id, txt, uid, name);
+  socket.on("alert", (txt, uid, name, id) => {
+    io.emit("change", socket.id, txt, uid, name, id);
   });
 
-  socket.on("join", (uid, name) => {
-    io.emit("joined", socket.id, uid, name);
+  socket.on("join", (uid, name, id) => {
+    io.emit("joined", socket.id, uid, name, id);
     console.log("join");
   });
 
-  socket.on("typing", (uid, name) => {
-    io.emit("typing", socket.id, uid, name);
+  socket.on("typing", (uid, name, id) => {
+    io.emit("typing", socket.id, uid, name, id);
     console.log("typing");
   });
 });
